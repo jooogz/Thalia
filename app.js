@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-const { getRandomMeme } = require('./randomMeme');
-const { getRandomAww } = require('./randomAww');
+const { getRandomMeme } = require('./random/randomMeme');
+const { getRandomAww } = require('./random/randomAww');
 require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();

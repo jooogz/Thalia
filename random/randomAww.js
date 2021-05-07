@@ -2,7 +2,7 @@ fetch = require('node-fetch')
 module.exports = {
     getRandomAww: async function() {
       let aww = [];
-    await fetch("https://www.reddit.com/r/aww/new.json?limit=100")
+    await fetch("https://www.reddit.com/r/aww/new.json?limit=10000")
         .then(data => data.json())
         .then(res => {            
             const children = res.data.children;
