@@ -1,9 +1,9 @@
 const Discord = require('discord.js');
 const { getRandomMeme } = require('./random/randomMeme');
-const { getRandomAww } = require('./random/randomAww');
+const { getRandomAnimal } = require('./random/randomAnimal');
 const { getRandomFood } = require('./random/randomFood');
-const { getRandomPorn} = require('./random/randomPorn')
-const { getRandomPublic} = require('./random/randomPublic')
+const { getRandomPorn, getRandomPublic} = require('./random/randomPorn')
+
 require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
@@ -18,8 +18,8 @@ client.on('message', async msg => {
     }
 });
 client.on('message', async msg => {
-    if(msg.content === 'aww') {
-        msg.channel.send(await getRandomAww());
+    if(msg.content === 'aninmal') {
+        msg.channel.send(await getRandomAnimal());
     }
 });
 client.on('message', async msg => {
