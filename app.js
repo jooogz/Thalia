@@ -3,6 +3,7 @@ const { getRandomMeme } = require('./random/randomMeme');
 const { getRandomAww } = require('./random/randomAww');
 const { getRandomFood } = require('./random/randomFood');
 const { getRandomPorn} = require('./random/randomPorn')
+const { getRandomPublic} = require('./random/randomPublic')
 require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
@@ -30,5 +31,11 @@ client.on('message', async msg => {
 client.on('message', async msg => {
     if(msg.content === 'porn') {
         msg.channel.send(await getRandomPorn());
+    }
+}); 
+
+client.on('message', async msg => {
+    if(msg.content === 'public') {
+        msg.channel.send(await getRandomPublic());
     }
 }); 
