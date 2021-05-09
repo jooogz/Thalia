@@ -1,4 +1,5 @@
-fetch = require('node-fetch')
+fetch = require('node-fetch');
+const Discord = require('discord.js');
 const used = []
 module.exports = {
     getRandomFood: async function () {
@@ -20,8 +21,12 @@ module.exports = {
 
         }
         const pick = food[Math.floor(Math.random() * food.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle('Here take some food')
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
         used.push(pick)
-        return pick
-
+        return embed
     }
 }
