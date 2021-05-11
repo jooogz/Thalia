@@ -16,7 +16,7 @@ module.exports = {
                     }
                 }
             }
-            base36 = children[99].data.name;
+            base36 = children[children.length - 1].data.name;
 
         }
         const pick = animal[Math.floor(Math.random() * animal.length)];
