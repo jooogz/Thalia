@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { getRandomMeme } = require('./random/randomMeme');
-const { getRandomAnimal } = require('./random/randomAnimal');
+const { getRandomAnimal, getRandomDoggo } = require('./random/randomAnimal');
 const { getRandomFood } = require('./random/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomFunny } = require('./random/randomPorn')
 
@@ -13,6 +13,11 @@ client.login(process.env.BOT_TOKEN);
 client.on('ready', () => console.log('The Bot is ready!'));
 
 client.on('message', async msg => {
+    if(msg.content ==='ping'){
+        msg.channel.send(`Websocket heartbeat: ${client.ws.ping}ms.`)
+    }
+});
+client.on('message', async msg => {
     if (msg.content === 'dank') {
         msg.channel.send(await getRandomMeme());
     }
@@ -20,6 +25,11 @@ client.on('message', async msg => {
 client.on('message', async msg => {
     if (msg.content === 'aninmal') {
         msg.channel.send(await getRandomAnimal());
+    }
+});
+client.on('message', async msg => {
+    if (msg.content === 'doggo') {
+        msg.channel.send(await getRandomDoggo());
     }
 });
 client.on('message', async msg => {
