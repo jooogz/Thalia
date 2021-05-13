@@ -51,32 +51,6 @@ module.exports = {
             .setFooter("a symphony of fucks");
         return embed
     },
-    getRandomFunny: async function () {
-        let funny = [];
-        let base36 = ""
-        for (let index = 0; index < 5; index++) {
-            const data = await fetch("https://www.reddit.com/r/NSFWfunny/hot.json?limit=50&after=" + base36)
-            const res = await data.json()
-            const children = res.data.children;
-            for (let i = 0; i < children.length; i++) {
-                const link = children[i].data.url_overridden_by_dest;
-                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    funny.push(link)
-                }
-            }
-
-            base36 = children[49].data.name;
-
-        }
-        const pick = funny[Math.floor(Math.random() * funny.length)];
-        const embed = new Discord.MessageEmbed()
-            .setTitle("Here's funny nsfw you weirdo")
-            .setColor(0x00A2E8)
-            .setImage(pick)
-            .setFooter("a symphony of fucks");
-        return embed
-
-    },
     getRandomOf: async function () {
         let of = [];
         let base36 = ""
@@ -91,7 +65,7 @@ module.exports = {
                 }
 
             }
-            base36 = children[49].data.name;
+            base36 = children[children.length - 1].data.name;
 
         }
         const pick = of[Math.floor(Math.random() * of.length)];
@@ -116,7 +90,8 @@ module.exports = {
                 }
 
             }
-            base36 = children[49].data.name;
+            base36 = children[children.length - 1].data.name;
+
 
         }
         const pick = alt[Math.floor(Math.random() * alt.length)];
@@ -141,7 +116,7 @@ module.exports = {
                 }
 
             }
-            base36 = children[49].data.name;
+            base36 = children[children.length - 1].data.name;
 
         }
         const pick = kink[Math.floor(Math.random() * kink.length)];
@@ -152,4 +127,34 @@ module.exports = {
             .setFooter("a symphony of fucks");
         return embed
     },
+    getRandomGif: async function () {
+        let gif = [];
+        let base36 = ""
+        for (let index = 0; index < 5; index++) {
+            const data = await fetch("https://www.reddit.com/r/The_Best_NSFW_GIFS/.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if(link.endsWith('.gifv')){
+                  var newLink = link.substring(0, link.length - 1)
+                    gif.push(newLink)
+                }
+                else if (link && (link.endsWith('.gif') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    gif.push(link)
+                }
+
+            }
+            base36 = children[children.length - 1].data.name;
+
+        }
+        const pick = gif[Math.floor(Math.random() * gif.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Heres a NSFW Gif.")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        return embed
+    }
 }
+
