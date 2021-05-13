@@ -6,7 +6,7 @@ module.exports = {
         let porn = [];
         let base36 = ""
         for (let index = 0; index < 5; index++) {
-            const data = await fetch("https://www.reddit.com/user/privateremotecache/m/top_nsfw/.json?limit=100&after=" + base36)
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/porn/hot/.json?limit=100&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
@@ -33,7 +33,7 @@ module.exports = {
         let public = [];
         let base36 = ""
         for (let index = 0; index < 5; index++) {
-            const data = await fetch("https://old.reddit.com/user/Wasted2muchTime/m/public/new/.json?limit=100&after=" + base36)
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/public/hot.json?limit=100&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
@@ -60,7 +60,7 @@ module.exports = {
         let funny = [];
         let base36 = ""
         for (let index = 0; index < 5; index++) {
-            const data = await fetch("https://www.reddit.com/r/NSFWfunny.json?limit=100&after=" + base36)
+            const data = await fetch("https://www.reddit.com/r/NSFWfunny/hot.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
@@ -71,7 +71,7 @@ module.exports = {
                     }
                 }
             }
-            base36 = children[children.length - 1].data.name;
+            base36 = children[49].data.name;
 
         }
         const pick = funny[Math.floor(Math.random() * funny.length)];
@@ -83,5 +83,60 @@ module.exports = {
         used.push(pick)
         return embed
 
-    }
+    },
+    getRandomOf: async function () {
+        let of = [];
+        let base36 = ""
+        for (let index = 0; index < 5; index++) {
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/of/hot.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    if (!used.includes(link)) { // no duplications
+                        of.push(link)
+                    }
+                }
+            }
+            base36 = children[49].data.name;
+
+        }
+        const pick = of[Math.floor(Math.random() * of.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("You are not the only fan.")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        used.push(pick)
+        return embed
+    },
+    getRandomAlt: async function () {
+        let alt = [];
+        let base36 = ""
+        for (let index = 0; index < 5; index++) {
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/alt/hot.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    if (!used.includes(link)) { // no duplications
+                        alt.push(link)
+                    }
+                }
+            }
+            base36 = children[49].data.name;
+
+        }
+        const pick = alt[Math.floor(Math.random() * alt.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Heres a crazy alt girl you might fall in love with.")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        used.push(pick)
+        return embed
+    },
 }
+

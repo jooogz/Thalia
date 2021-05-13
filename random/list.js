@@ -1,0 +1,1 @@
+["aww = will send a picture of a cute pet", "doggo = will send a smol pupper", "food = will send a picture of some random food", "dank = send a random meme", "porn = random porn", "public = random public porn", "funny nsfw = random funny nfsw", "of = random only fans picture" ]
