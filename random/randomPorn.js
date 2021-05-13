@@ -1,6 +1,5 @@
 fetch = require('node-fetch')
 const Discord = require('discord.js');
-const used = []
 module.exports = {
     getRandomPorn: async function () {
         let porn = [];
@@ -12,9 +11,8 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        porn.push(link)
-                    }
+                    porn.push(link)
+
                 }
             }
             base36 = children[children.length - 1].data.name;
@@ -26,7 +24,6 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
         return embed
     },
     getRandomPublic: async function () {
@@ -39,10 +36,9 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        public.push(link)
-                    }
+                    public.push(link)
                 }
+
             }
             base36 = children[children.length - 1].data.name;
 
@@ -53,7 +49,6 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
         return embed
     },
     getRandomFunny: async function () {
@@ -66,11 +61,10 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        funny.push(link)
-                    }
+                    funny.push(link)
                 }
             }
+
             base36 = children[49].data.name;
 
         }
@@ -80,7 +74,6 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
         return embed
 
     },
@@ -94,10 +87,9 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        of.push(link)
-                    }
+                    of.push(link)
                 }
+
             }
             base36 = children[49].data.name;
 
@@ -108,7 +100,6 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
         return embed
     },
     getRandomAlt: async function () {
@@ -121,10 +112,9 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        alt.push(link)
-                    }
+                    alt.push(link)
                 }
+
             }
             base36 = children[49].data.name;
 
@@ -135,8 +125,31 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
+        return embed
+    },
+    getRandomKink: async function () {
+        let kink = [];
+        let base36 = ""
+        for (let index = 0; index < 5; index++) {
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/kinks/hot.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    kink.push(link)
+                }
+
+            }
+            base36 = children[49].data.name;
+
+        }
+        const pick = kink[Math.floor(Math.random() * kink.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Heres a some kinky shit... beware.")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
         return embed
     },
 }
-

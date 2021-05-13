@@ -12,9 +12,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        food.push(link)
-                    }
+                    food.push(link)
                 }
             }
             base36 = children[children.length - 1].data.name;
@@ -26,7 +24,6 @@ module.exports = {
             .setColor(0x00A2E8)
             .setImage(pick)
             .setFooter("a symphony of fucks");
-        used.push(pick)
         return embed
     }
 }
