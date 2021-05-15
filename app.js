@@ -16,7 +16,9 @@ sfwTable
     .addRow("aww", "cute animal")
     .addRow("doggo", "smol pupper")
     .addRow("food", "picture of food")
-    .addRow("dank", "random meme");
+    .addRow("dank", "random meme")
+    .addRow("urban", "tell you the definition of the word that you search");
+
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
