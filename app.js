@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
-const { getRandomMeme } = require('./random/randomMeme');
-const { getRandomAnimal } = require('./random/randomAnimal');
-const { getRandomFood } = require('./random/randomFood');
-const { getRandomPorn, getRandomPublic} = require('./random/randomPorn')
+const { getRandomMeme } = require('./events/randomMeme');
+const { getRandomAnimal } = require('./events/randomAnimal');
+const { getRandomFood } = require('./events/randomFood');
+const { getRandomPorn, getRandomPublic} = require('./events/randomPorn')
 
 require('dotenv').config();
 fetch = require('node-fetch')
