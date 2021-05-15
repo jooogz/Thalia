@@ -17,11 +17,13 @@ sfwTable
     .addRow("doggo", "smol pupper")
     .addRow("food", "picture of food")
     .addRow("dank", "random meme");
-const { getRandomMeme } = require('./random/randomMeme');
-const { getRandomAnimal } = require('./random/randomAnimal');
-const { getRandomFood } = require('./random/randomFood');
-const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./random/randomPorn')
-const {getRandomAdvice} = require('./random/advice')
+const { getRandomMeme } = require('./events/randomMeme');
+const { getRandomAnimal } = require('./events/randomAnimal');
+const { getRandomFood } = require('./events/randomFood');
+const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./events/randomPorn')
+const {getRandomAdvice} = require('./events/advice')
+const {urbanDictionary}= require('./events/urban');
+const urban = require('./events/urban');
 require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
@@ -77,5 +79,9 @@ client.on('message', async msg => {
     }
     if (msg.content === "advice") {
         msg.channel.send(await getRandomAdvice());
+    }
+    if (msg.content.startsWith('urban')) {
+        param = msg.content.substr(6)
+        msg.channel.send(await urbanDictionary(param))
     }
 });

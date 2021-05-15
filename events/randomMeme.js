@@ -1,5 +1,4 @@
 fetch = require('node-fetch')
-const used = []
 module.exports = {
     getRandomMeme: async function () {
         let meme = [];
