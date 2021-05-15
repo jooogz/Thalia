@@ -6,7 +6,6 @@ nsfwTable
     .setHeading("Command", "Function")
     .addRow("porn", "random porn")
     .addRow("public", "exhibitionist kink picture")
-    .addRow("nsfw", "will send a gif of porn")
     .addRow("of", "someone who you are the only fan of")
     .addRow("alt", "typically crazy, usually hot")
     .addRow("kink", "A mixture of a few.. beware")
@@ -75,9 +74,6 @@ client.on('message', async msg => {
     }
     if (msg.content === 'alt') {
         msg.channel.send(await getRandomAlt());
-    }
-    if (msg.content === 'nsfw') {
-        msg.channel.send(await getRandomGif());
     }
     if (msg.content === "advice") {
         msg.channel.send(await getRandomAdvice());
