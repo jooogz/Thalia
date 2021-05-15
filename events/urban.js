@@ -5,9 +5,10 @@ module.exports = {
         const data = await fetch(url)
         const res = await data.json()
         console.log(url)
-        const urban = res.list.definition
-        console.log(urban)
-        return urban
+        if (res.list[0].definition === true) {
+            return res.list[0].definition
+        } else return 'sorry theres nothing listed for that in the Urban Dictionary'
+
     }
 }
 
