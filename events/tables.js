@@ -21,6 +21,8 @@ module.exports = {
             .addRow("doggo", "smol pupper")
             .addRow("food", "picture of food")
             .addRow("dank", "random meme")
+            .addRow("pun", "everyone loves a pun")
+            .addRow("dark joke", "test the limits of what you find funny")
             .addRow("urban", "tell you the definition of the word that you search")
             .addRow("8ball", "let me answer your questions!")
             .addRow("key", "inspiration from the main man himself, don't be afraid for another one.  Major key")

@@ -120,5 +120,17 @@ module.exports = {
             ]
       const pick = key[Math.floor(Math.random() * key.length)];
       return pick
+    },
+    punJoke : async function(){
+        const data = await fetch('https://v2.jokeapi.dev/joke/Pun')
+        const res = await data.json() 
+        const joke = res.setup + '\n' + res.delivery
+        return joke
+    },
+    darkJoke : async function(){
+        const data = await fetch('https://v2.jokeapi.dev/joke/Dark')
+        const res = await data.json()
+        const joke  = res.setup + '\n' + res.delivery
+        return joke 
     }
 }

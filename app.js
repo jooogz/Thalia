@@ -3,7 +3,7 @@ const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo} = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink } = require('./events/randomPorn');
-const { getRandomAdvice, magicEightBall, djKhaled } = require('./events/fun');
+const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke } = require('./events/fun');
 const { urbanDictionary } = require('./events/urban');
 const { nsfwFunction, sfwFunction } = require("./events/tables")
 const urban = require('./events/urban');
@@ -52,10 +52,10 @@ client.on('message', async msg => {
         msg.channel.send(await getRandomKink());
     }
     if (msg.content === 'help' || msg.content === "commands") {
-        msg.channel.send((`\n\n\`\`\`\n${sfwFunction()}\`\`\``))
+        msg.channel.send((`\n\n\`\`\`\n${sfwFunction()}\`\`\``));
     }
     if (msg.content === "Nhelp") {
-        msg.channel.send((`\n\n\`\`\`\n${nsfwFunction()}\`\`\``))
+        msg.channel.send((`\n\n\`\`\`\n${nsfwFunction()}\`\`\``));
     }
     if (msg.content === 'alt') {
         msg.channel.send(await getRandomAlt());
@@ -63,9 +63,15 @@ client.on('message', async msg => {
     if (msg.content === "advice") {
         msg.channel.send(await getRandomAdvice());
     }
+    if (msg.content === "pun") {
+        msg.channel.send(await  punJoke());
+    }
+    if(msg.content === "dark joke"){
+        msg.channel.send(await darkJoke());
+    }
     if (msg.content.startsWith('urban')) {
         param = msg.content.substr(6)
-        msg.channel.send(await urbanDictionary(param))
+        msg.channel.send(await urbanDictionary(param));
     }
     if (msg.content.startsWith('8ball')) {
         msg.channel.send(msg.author.toString() + " " + magicEightBall());
