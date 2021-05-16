@@ -21,8 +21,8 @@ sfwTable
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
-const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./events/randomPorn')
-const {getRandomAdvice} = require('./events/advice')
+const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink} = require('./events/randomPorn')
+const {getRandomAdvice, magicEightBall} = require('./events/fun')
 const {urbanDictionary}= require('./events/urban');
 const urban = require('./events/urban');
 require('dotenv').config();
@@ -81,5 +81,8 @@ client.on('message', async msg => {
     if (msg.content.startsWith('urban')) {
         param = msg.content.substr(6)
         msg.channel.send(await urbanDictionary(param))
+    }
+    if (msg.content.startsWith('8ball')){
+        msg.channel.send(msg.author.toString() + " " + magicEightBall());
     }
 });
