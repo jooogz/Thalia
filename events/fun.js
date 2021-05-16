@@ -7,8 +7,7 @@ module.exports = {
         console.log(advice)
         return advice
     }
-}
-module.exports = {
+,
     magicEightBall: function () {
         const eightBall = ["It is Certain",
             "It is decidedly so",

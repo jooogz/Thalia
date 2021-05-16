@@ -16,13 +16,14 @@ sfwTable
     .addRow("doggo", "smol pupper")
     .addRow("food", "picture of food")
     .addRow("dank", "random meme")
-    .addRow("urban", "tell you the definition of the word that you search");
+    .addRow("urban", "tell you the definition of the word that you search")
+    .addRow("8ball", "let me answer your questions!");
 
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
-const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink} = require('./events/randomPorn')
-const {getRandomAdvice, magicEightBall} = require('./events/fun')
+const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink} = require('./events/randomPorn');
+const {getRandomAdvice, magicEightBall} = require('./events/fun');
 const {urbanDictionary}= require('./events/urban');
 const urban = require('./events/urban');
 require('dotenv').config();
