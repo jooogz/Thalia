@@ -83,5 +83,89 @@ module.exports = {
         used.push(pick)
         return embed
 
+    },
+    getRandomAlt: async function () {
+        let alt = [];
+        let base36 = ""
+        for (let index = 0; index < 10; index++) {
+            const data = await fetch("https://www.reddit.com/user/jeo96x/m/alt/new/.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    if (!used.includes(link)) { // no duplications
+                        alt.push(link)
+                    }
+                }
+            }
+            base36 = children[children.length - 1].data.name;
+
+        }
+        const pick = alt[Math.floor(Math.random() * alt.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Here's funny nsfw you weirdo")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        used.push(pick)
+        return embed
+
+    },
+    getRandomOf: async function () {
+        let of = [];
+        let base36 = ""
+        for (let index = 0; index < 10; index++) {
+            const data = await fetch("https://www.reddit.com/user/jeo96x/m/of/new/.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    if (!used.includes(link)) { // no duplications
+                        of.push(link)
+                    }
+                }
+            }
+            base36 = children[children.length - 1].data.name;
+
+        }
+        const pick = of[Math.floor(Math.random() * of.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Here's funny nsfw you weirdo")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        used.push(pick)
+        return embed
+
+    },
+    getRandomKink: async function () {
+        let kink = [];
+        let base36 = ""
+        for (let index = 0; index < 10; index++) {
+            const data = await fetch("https://www.reddit.com/user/jeo96x/m/kinks/new/.json?limit=50&after=" + base36)
+            const res = await data.json()
+            const children = res.data.children;
+            for (let i = 0; i < children.length; i++) {
+                const link = children[i].data.url_overridden_by_dest;
+                if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
+                    if (!used.includes(link)) { // no duplications
+                        kink.push(link)
+                    }
+                }
+            }
+            base36 = children[children.length - 1].data.name;
+
+        }
+        const pick = kink[Math.floor(Math.random() * kink.length)];
+        const embed = new Discord.MessageEmbed()
+            .setTitle("Here's funny nsfw you weirdo")
+            .setColor(0x00A2E8)
+            .setImage(pick)
+            .setFooter("a symphony of fucks");
+        used.push(pick)
+        return embed
+
     }
 }
