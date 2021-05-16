@@ -1,31 +1,11 @@
 const Discord = require('discord.js');
-const AsciiTable = require('ascii-table')
-
-const nsfwTable = new AsciiTable('NSFW Commands')
-nsfwTable
-    .setHeading("Command", "Function")
-    .addRow("porn", "random porn")
-    .addRow("public", "exhibitionist kink picture")
-    .addRow("of", "someone who you are the only fan of")
-    .addRow("alt", "typically crazy, usually hot")
-    .addRow("kink", "A mixture of a few.. beware")
-const sfwTable = new AsciiTable('Commands')
-sfwTable
-    .setHeading("Command", "Function")
-    .addRow("aww", "cute animal")
-    .addRow("doggo", "smol pupper")
-    .addRow("food", "picture of food")
-    .addRow("dank", "random meme")
-    .addRow("urban", "tell you the definition of the word that you search")
-    .addRow("8ball", "let me answer your questions!")
-    .addRow("key", "inspiration from the main man himself, don't be afraid for another one.  Major key")
-
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
-const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink} = require('./events/randomPorn');
-const {getRandomAdvice, magicEightBall, djKhaled} = require('./events/fun');
-const {urbanDictionary}= require('./events/urban');
+const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink } = require('./events/randomPorn');
+const { getRandomAdvice, magicEightBall, djKhaled } = require('./events/fun');
+const { urbanDictionary } = require('./events/urban');
+const { nsfwFunction, sfwFunction } = require("./events/tables")
 const urban = require('./events/urban');
 require('dotenv').config();
 fetch = require('node-fetch')
@@ -69,10 +49,10 @@ client.on('message', async msg => {
         msg.channel.send(await getRandomKink());
     }
     if (msg.content === 'help' || msg.content === "commands") {
-        msg.channel.send((`\n\n\`\`\`\n${sfwTable.toString()}\`\`\``))
+        msg.channel.send((`\n\n\`\`\`\n${sfwFunction()}\`\`\``))
     }
     if (msg.content === "Nhelp") {
-        msg.channel.send((`\n\n\`\`\`\n${nsfwTable.toString()}\`\`\``))
+        msg.channel.send((`\n\n\`\`\`\n${nsfwFunction()}\`\`\``))
     }
     if (msg.content === 'alt') {
         msg.channel.send(await getRandomAlt());
@@ -84,10 +64,10 @@ client.on('message', async msg => {
         param = msg.content.substr(6)
         msg.channel.send(await urbanDictionary(param))
     }
-    if (msg.content.startsWith('8ball')){
+    if (msg.content.startsWith('8ball')) {
         msg.channel.send(msg.author.toString() + " " + magicEightBall());
     }
-    if (msg.content === "key") { 
-        msg.channel.send(msg.author.toString() + " "+ djKhaled());
+    if (msg.content === "key") {
+        msg.channel.send(msg.author.toString() + " " + djKhaled());
     }
 });

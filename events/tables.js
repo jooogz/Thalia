@@ -11,7 +11,7 @@ module.exports = {
             .addRow("alt", "typically crazy, usually hot")
             .addRow("kink", "A mixture of a few.. beware");
 
-        return nsfwTable
+        return nsfwTable.toString()
     },
     sfwFunction: function () {
         const sfwTable = new AsciiTable('Commands')
@@ -24,6 +24,6 @@ module.exports = {
             .addRow("urban", "tell you the definition of the word that you search")
             .addRow("8ball", "let me answer your questions!")
             .addRow("key", "inspiration from the main man himself, don't be afraid for another one.  Major key")
-        return sfwTable
+        return sfwTable.toString()
     },
 }
