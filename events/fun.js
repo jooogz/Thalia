@@ -4,10 +4,8 @@ module.exports = {
         const data = await fetch("http://api.adviceslip.com/advice")
         const res = await data.json()
         const advice = res.slip.advice
-        console.log(advice)
         return advice
-    }
-,
+    },
     magicEightBall: function () {
         const eightBall = ["It is Certain",
             "It is decidedly so",
