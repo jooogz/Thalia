@@ -17,13 +17,14 @@ sfwTable
     .addRow("food", "picture of food")
     .addRow("dank", "random meme")
     .addRow("urban", "tell you the definition of the word that you search")
-    .addRow("8ball", "let me answer your questions!");
+    .addRow("8ball", "let me answer your questions!")
+    .addRow("key", "inspiration from the main man himself, don't be afraid for another one.  Major key")
 
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink} = require('./events/randomPorn');
-const {getRandomAdvice, magicEightBall} = require('./events/fun');
+const {getRandomAdvice, magicEightBall, djKhaled} = require('./events/fun');
 const {urbanDictionary}= require('./events/urban');
 const urban = require('./events/urban');
 require('dotenv').config();
@@ -85,5 +86,8 @@ client.on('message', async msg => {
     }
     if (msg.content.startsWith('8ball')){
         msg.channel.send(msg.author.toString() + " " + magicEightBall());
+    }
+    if (msg.content === "key") { 
+        msg.channel.send(msg.author.toString() + " "+ djKhaled());
     }
 });
