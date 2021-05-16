@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { getRandomMeme } = require('./events/randomMeme');
-const { getRandomAnimal } = require('./events/randomAnimal');
+const { getRandomAnimal, getRandomDoggo} = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink } = require('./events/randomPorn');
 const { getRandomAdvice, magicEightBall, djKhaled } = require('./events/fun');
@@ -29,9 +29,12 @@ client.on('message', async msg => {
     }
     if (msg.content === 'aninmal') {
         msg.channel.send(await getRandomAnimal());
+    } 
+    if(msg.content === "doggo"){
+        msg.content.send(await getRandomDoggo());
     }
     if (msg.content === 'food') {
-        msg.channel.send(await getRandomFood())
+        msg.channel.send(await getRandomFood());
     }
     if (msg.content === 'porn') {
         msg.channel.send(await getRandomPorn());
