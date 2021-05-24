@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { keepAlive } = require ('./events/server');
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo} = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
@@ -11,7 +12,9 @@ require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
 
+keepAlive()
 client.login(process.env.BOT_TOKEN);
+
 
 
 client.on('ready', () => {
@@ -37,28 +40,56 @@ client.on('message', async msg => {
         msg.channel.send(await getRandomFood());
     }
     if (msg.content === 'porn') {
-        msg.channel.send(await getRandomPorn());
+      if (msg.channel.nsfw) {
+            msg.channel.send(await getRandomPorn());
+        } else {
+            msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+        }
     }
     if (msg.content === 'public') {
+      if (msg.channel.nsfw){ 
         msg.channel.send(await getRandomPublic());
+      }else{
+        msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+      }
     }
     if (msg.content === 'funny nsfw') {
+      if (msg.channel.nsfw){
         msg.channel.send(await getRandomFunny());
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content === 'of') {
+      if(msg.channel.nsfw){
         msg.channel.send(await getRandomOf());
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content === 'kink') {
+      if(msg.channel.nsfw){
         msg.channel.send(await getRandomKink());
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content === 'help' || msg.content === "commands") {
         msg.channel.send((`\n\n\`\`\`\n${sfwFunction()}\`\`\``));
     }
     if (msg.content === "Nhelp") {
+      if(msg.channel.nsfw){
         msg.channel.send((`\n\n\`\`\`\n${nsfwFunction()}\`\`\``));
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content === 'alt') {
+      if(msg.channel.nsfw){
         msg.channel.send(await getRandomAlt());
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content === "advice") {
         msg.channel.send(await getRandomAdvice());
@@ -67,7 +98,11 @@ client.on('message', async msg => {
         msg.channel.send(await  punJoke());
     }
     if(msg.content === "dark joke"){
+      if(msg.channel.nfsw){
         msg.channel.send(await darkJoke());
+    }else{
+       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
     }
     if (msg.content.startsWith('urban')) {
         param = msg.content.substr(6)
