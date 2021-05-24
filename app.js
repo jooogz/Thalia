@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const { keepAlive } = require ('./events/server');
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo} = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
@@ -12,7 +11,6 @@ require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
 
-keepAlive()
 client.login(process.env.BOT_TOKEN);
 
 
