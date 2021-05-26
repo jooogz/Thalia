@@ -168,7 +168,7 @@ module.exports = {
         return embed
 
     },
-    getRandomGIf: async function () {
+    getRandomGif: async function () {
         let gif = [];
         let base36 = ""
         for (let index = 0; index < 10; index++) {

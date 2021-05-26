@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { getRandomMeme } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
-const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink } = require('./events/randomPorn');
+const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./events/randomPorn');
 const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke } = require('./events/fun');
 const { urbanDictionary } = require('./events/urban');
 const { nsfwFunction, sfwFunction } = require("./events/tables")
@@ -88,6 +88,13 @@ client.on('message', async msg => {
   if (msg.content === 'porn') {
     if (msg.channel.nsfw) {
       msg.channel.send(await getRandomPorn());
+    } else {
+      msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
+    }
+  }
+  if (msg.content === 'giffed') {
+    if (msg.channel.nsfw) {
+      msg.channel.send(await getRandomGif());
     } else {
       msg.channel.send("Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg");
     }
