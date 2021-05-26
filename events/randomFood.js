@@ -21,7 +21,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setTitle('Here take some food')
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .attachFiles(pick)
             .setFooter("a symphony of fucks");
         return embed
     }
