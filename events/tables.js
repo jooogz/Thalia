@@ -10,7 +10,9 @@ module.exports = {
             .addRow("of", "someone who you are the only fan of")
             .addRow("alt", "typically crazy, usually hot")
             .addRow("kink", "A mixture of a few.. beware")
-            .addRow("dark joke", "test the limits of what you find funny");
+            .addRow("giffed", "a nfsw Gif!")
+            .addRow("dark joke", "test the limits of what you find funny")
+            .addRow("help", "find out what the SFW commands are")
 
         return nsfwTable.toString()
     },
