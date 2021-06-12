@@ -12,7 +12,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) {
                         porn.push(link)
                     }
                 }
@@ -39,7 +39,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) {
                         public.push(link)
                     }
                 }
@@ -66,7 +66,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) {
                         funny.push(link)
                     }
                 }
@@ -94,7 +94,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) {
                         alt.push(link)
                     }
                 }
@@ -122,7 +122,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) {
                         of.push(link)
                     }
                 }
@@ -152,11 +152,11 @@ module.exports = {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
                     kink.push([name, link])
-    
-    
+
+
                 }
             }
-    
+
             base36 = children[children.length - 1].data.name;
         }
         const pick = kink[Math.floor(Math.random() * kink.length)];
@@ -181,7 +181,7 @@ module.exports = {
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
+                    if (!used.includes(link)) { 
                         gif.push(link)
                     }
                 }
@@ -197,5 +197,5 @@ module.exports = {
             .setFooter("Thalia");
         used.push(pick)
         return embed
-}
+    }
 }
