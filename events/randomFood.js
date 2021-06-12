@@ -22,7 +22,7 @@ module.exports = {
             .setTitle('Here take some food')
             .setColor(0x00A2E8)
             .attachFiles(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         return embed
     }
 }

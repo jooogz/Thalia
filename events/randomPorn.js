@@ -25,7 +25,7 @@ module.exports = {
             .setTitle("Here's random porn")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
     },
@@ -52,7 +52,7 @@ module.exports = {
             .setTitle("Here's some public pics")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
     },
@@ -79,7 +79,7 @@ module.exports = {
             .setTitle("Here's funny nsfw you weirdo")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
 
@@ -87,7 +87,7 @@ module.exports = {
     getRandomAlt: async function () {
         let alt = [];
         let base36 = ""
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 5; index++) {
             const data = await fetch("https://www.reddit.com/user/jeo96x/m/alt/new/.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
@@ -107,7 +107,7 @@ module.exports = {
             .setTitle("oh look an alt girl that you have likely fallen for")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
 
@@ -115,7 +115,7 @@ module.exports = {
     getRandomOf: async function () {
         let of = [];
         let base36 = ""
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 5; index++) {
             const data = await fetch("https://www.reddit.com/user/jeo96x/m/of/new/.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
@@ -135,43 +135,46 @@ module.exports = {
             .setTitle("You are not the only fan")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
 
     },
     getRandomKink: async function () {
         let kink = [];
-        let base36 = ""
-        for (let index = 0; index < 10; index++) {
-            const data = await fetch("https://www.reddit.com/user/jeo96x/m/kinks/new/.json?limit=50&after=" + base36)
+        let base36 = "";
+        for (let index = 0; index < 5; index++) {
+            const data = await fetch("https://www.reddit.com/user/jeo96x/m/kinks/top/?t=month/.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
+                const name = children[i].data.subreddit;
                 const link = children[i].data.url_overridden_by_dest;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { // no duplications
-                        kink.push(link)
-                    }
+                    kink.push([name, link])
+    
+    
                 }
             }
+    
             base36 = children[children.length - 1].data.name;
-
         }
         const pick = kink[Math.floor(Math.random() * kink.length)];
+        console.log(pick[0])
+        console.log(pick[1])
         const embed = new Discord.MessageEmbed()
             .setTitle("be careful in what you wish for...")
+            .setDescription("the kink on offer is" + " " + pick[0])
             .setColor(0x00A2E8)
-            .setImage(pick)
-            .setFooter("a symphony of fucks");
-        used.push(pick)
+            .setImage(pick[1])
+            .setFooter("Thalia");
         return embed
 
     },
     getRandomGif: async function () {
         let gif = [];
         let base36 = ""
-        for (let index = 0; index < 10; index++) {
+        for (let index = 0; index < 5; index++) {
             const data = await fetch("https://www.reddit.com/user/jeo96x/m/gif/new/.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
@@ -191,7 +194,7 @@ module.exports = {
             .setTitle("Here is a random GIF")
             .setColor(0x00A2E8)
             .setImage(pick)
-            .setFooter("a symphony of fucks");
+            .setFooter("Thalia");
         used.push(pick)
         return embed
 }

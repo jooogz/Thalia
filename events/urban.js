@@ -1,5 +1,3 @@
-const { MessageFlags } = require('discord.js');
-
 fetch = require('node-fetch');
 module.exports = {
     urbanDictionary: async function (param) {

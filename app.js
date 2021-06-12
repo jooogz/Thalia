@@ -71,9 +71,6 @@ client.on('message', async msg => {
   if (msg.content === "bobbydrone") {
     if (msg.channel.nsfw) {
       msg.channel.send(drone());
-      client.users.fetch('558756237941014538').then(user => {
-        user.send(drone());
-      })
     } else {
       msg.channel.send("oi" + ' ' + msg.author.toString() + ' ' + "Wrong channel type! NSFW only!" + " " + "https://i.kym-cdn.com/photos/images/newsfeed/001/842/713/b73.jpg")
     }
