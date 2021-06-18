@@ -29,10 +29,12 @@ module.exports = {
             .addRow("pun", "everyone loves a pun")
             .addRow("random", "let Reddit pick something for you at random!")
             .addRow("urban", "tell you the definition of the word that you search")
-            .addRow('reddit', "enter a subreddit that you want to get a random photo from!s")
+            .addRow('reddit', "enter a subreddit that you want to get a random photo from!")
             .addRow("8ball", "let me answer your questions!")
-            .addRow("key", "inspiration from the main man himself, don't be afraid for another one.  Major key")
+            .addRow("key", "inspiration from the main man himself, another one.  Major key")
+            .addRow('yo momma', 'hear a sick diss about what wrong wit yo momma')
             .addRow("Nhelp", "find out what NFSW commands there are")
+            
         return sfwTable.toString()
     },
 }

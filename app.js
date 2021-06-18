@@ -3,11 +3,11 @@ const { getRandomMeme, getRandomUnexpected } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./events/randomPorn');
-const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke } = require('./events/fun');
+const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke, kanye, yoMomma } = require('./events/fun');
 const { urbanDictionary } = require('./events/urban');
 const { nsfwFunction, sfwFunction } = require("./events/tables")
 const { drone } = require("./events/estaaEggz")
-const {redditSearch, randReddit, nsfwReddit } = require("./events/reddit")
+const { redditSearch, randReddit, nsfwReddit } = require("./events/reddit")
 const urban = require('./events/urban');
 require('dotenv').config();
 fetch = require('node-fetch')
@@ -48,6 +48,9 @@ client.on('message', async msg => {
   if (msg.content === "advice") {
     msg.channel.send(await getRandomAdvice());
   }
+  if (msg.content == 'kanye') {
+    msg.channel.send(await kanye())
+  }
   if (msg.content === "pun") {
     msg.channel.send(await punJoke());
   }
@@ -58,7 +61,7 @@ client.on('message', async msg => {
     param = msg.content.substr(6)
     msg.channel.send(await urbanDictionary(param));
   }
-  if(msg.content.startsWith('reddit')){
+  if (msg.content.startsWith('reddit')) {
     param = msg.content.substr(7);
     msg.channel.send(await redditSearch(param));
   }
@@ -77,6 +80,9 @@ client.on('message', async msg => {
   }
   if (msg.content === "darkjoke") {
     msg.channel.send(await darkJoke());
+  }
+  if (msg.content === 'yo momma') {
+    msg.channel.send(await yoMomma());
   }
   if (msg.content === "Nhelp") {
     if (msg.channel.nsfw) {
