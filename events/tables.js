@@ -23,6 +23,8 @@ module.exports = {
             .setHeading("Command", "Function")
             .addRow("aww", "cute animal")
             .addRow("doggo", "smol pupper")
+            .addRow('advice', 'get some advice!')
+            .addRow('motivate', 'wise wise words.')
             .addRow("food", "picture of food")
             .addRow("unexpected", "Get something you didn't bargain for")
             .addRow("dank", "random meme")

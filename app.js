@@ -3,7 +3,7 @@ const { getRandomMeme, getRandomUnexpected } = require('./events/randomMeme');
 const { getRandomAnimal, getRandomDoggo } = require('./events/randomAnimal');
 const { getRandomFood } = require('./events/randomFood');
 const { getRandomPorn, getRandomPublic, getRandomOf, getRandomAlt, getRandomKink, getRandomGif } = require('./events/randomPorn');
-const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke, kanye, yoMomma } = require('./events/fun');
+const { getRandomAdvice, magicEightBall, djKhaled, punJoke, darkJoke, kanye, yoMomma, quotes } = require('./events/fun');
 const { urbanDictionary } = require('./events/urban');
 const { nsfwFunction, sfwFunction } = require("./events/tables")
 const { drone } = require("./events/estaaEggz")
@@ -47,6 +47,9 @@ client.on('message', async msg => {
   }
   if (msg.content === "advice") {
     msg.channel.send(await getRandomAdvice());
+  }
+  if(msg.content === 'quote'){
+    msg.channel.send(await quotes())
   }
   if (msg.content == 'kanye') {
     msg.channel.send(await kanye())

@@ -42,4 +42,13 @@ module.exports = {
     yoMomma: async function () {
         return joke[Math.floor(Math.random() * joke.length)]
     },
+
+    quotes : async function() { 
+        const res = await fetch('https://api.fisenko.net/quotes')
+        const data = await res.json()
+        const quote = data["text"]
+        const author = data["author"]
+
+        return quote + " \n - " + author
+    }
 }
