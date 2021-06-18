@@ -8,7 +8,8 @@ const { urbanDictionary } = require('./events/urban');
 const { nsfwFunction, sfwFunction } = require("./events/tables")
 const { drone } = require("./events/estaaEggz")
 const { redditSearch, randReddit, nsfwReddit } = require("./events/reddit")
-const urban = require('./events/urban');
+
+
 require('dotenv').config();
 fetch = require('node-fetch')
 const client = new Discord.Client();
