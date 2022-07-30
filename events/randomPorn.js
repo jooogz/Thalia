@@ -1,5 +1,6 @@
 fetch = require('node-fetch')
 const Discord = require('discord.js');
+const redSQ = ":red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square::red_square:"
 const used = []
 module.exports = {
     getRandomPorn: async function () {
@@ -11,20 +12,26 @@ module.exports = {
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) {
-                        porn.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                       porn.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
         const pick = porn[Math.floor(Math.random() * porn.length)];
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("Here's random porn")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
         used.push(pick)
         return embed
@@ -32,57 +39,70 @@ module.exports = {
     getRandomPublic: async function () {
         let public = [];
         let base36 = ""
-        for (let index = 0; index < 5; index++) {
+        for (let index = 0; index < 3; index++) {
             const data = await fetch("https://old.reddit.com/user/jeo96x/m/public/new/.json?limit=100&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) {
-                        public.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                        public.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
-        const pick = public[Math.floor(Math.random() * public.length)];
+        const pick = public[Math.floor(Math.random() * public.length)]
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("Here's some public pics")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
+            
         used.push(pick)
         return embed
     },
     getRandomFunny: async function () {
-        let funny = [];
+        let public = [];
         let base36 = ""
-        for (let index = 0; index < 10; index++) {
-            const data = await fetch("https://www.reddit.com/user/jeo96x/m/funnynsfw/new/.json?limit=50&after=" + base36)
+        for (let index = 0; index < 3; index++) {
+            const data = await fetch("https://old.reddit.com/user/jeo96x/m/funnyNSFW/new/.json?limit=100&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) {
-                        funny.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                        public.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
-        const pick = funny[Math.floor(Math.random() * funny.length)];
+        const pick = public[Math.floor(Math.random() * public.length)]
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("Here's funny nsfw you weirdo")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
+            
         used.push(pick)
         return embed
-
     },
     getRandomAlt: async function () {
         let alt = [];
@@ -93,20 +113,26 @@ module.exports = {
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) {
-                        alt.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                        alt.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
         const pick = alt[Math.floor(Math.random() * alt.length)];
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("oh look an alt girl that you have likely fallen for")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
         used.push(pick)
         return embed
@@ -121,53 +147,62 @@ module.exports = {
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) {
-                        of.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                        of.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
         const pick = of[Math.floor(Math.random() * of.length)];
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("You are not the only fan")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
         used.push(pick)
         return embed
 
     },
     getRandomKink: async function () {
-        let kink = [];
-        let base36 = "";
+        let of = [];
+        let base36 = ""
         for (let index = 0; index < 5; index++) {
-            const data = await fetch("https://www.reddit.com/user/jeo96x/m/kinks/top/?t=month/.json?limit=50&after=" + base36)
+            const data = await fetch("https://www.reddit.com/user/jeo96x/m/kinks/top/.json?limit=50&after=" + base36)
             const res = await data.json()
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
-                const name = children[i].data.subreddit;
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    kink.push([name, link])
-
-
+                    if (!used.includes([link, author, sub])) {
+                        of.push([link, author, sub])
+                         }
                 }
             }
-
             base36 = children[children.length - 1].data.name;
+
         }
-        const pick = kink[Math.floor(Math.random() * kink.length)];
-        console.log(pick[0])
-        console.log(pick[1])
+        const pick = of[Math.floor(Math.random() * of.length)];
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("be careful in what you wish for...")
-            .setDescription("the kink on offer is" + " " + pick[0])
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick[1])
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
+        used.push(pick)
         return embed
 
     },
@@ -180,20 +215,26 @@ module.exports = {
             const children = res.data.children;
             for (let i = 0; i < children.length; i++) {
                 const link = children[i].data.url_overridden_by_dest;
+                const author = children[i].data.author;
+                const sub = children[i].data.subreddit_name_prefixed;
                 if (link && (link.endsWith('.gif') || link.endsWith('.gifv') || link.endsWith('.jpg') || link.endsWith('.jpeg') || link.endsWith('.png') || link.endsWith('.mp4'))) {
-                    if (!used.includes(link)) { 
-                        gif.push(link)
-                    }
+                    if (!used.includes([link, author, sub])) {
+                        gif.push([link, author, sub])
+                         }
                 }
             }
             base36 = children[children.length - 1].data.name;
 
         }
         const pick = gif[Math.floor(Math.random() * gif.length)];
+        var subred = 'https://reddit.com/u/' + pick[1]
         const embed = new Discord.MessageEmbed()
-            .setTitle("Here is a random GIF")
+            .setTitle(pick[2])
             .setColor(0x00A2E8)
-            .setImage(pick)
+            .setImage(pick[0])
+            .setURL('https://reddit.com/'+pick[2])
+            .addField(redSQ, subred)
+            .addField(redSQ, "if nothing loads click open the photo!")
             .setFooter("Thalia");
         used.push(pick)
         return embed
